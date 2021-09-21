@@ -1,4 +1,6 @@
 const profileDataArgs = process.argv.slice(2);
+const fs = require('fs'); statement:
+const generatePage = require('./src/page-template.js');
 
 const printProfileData = profileDataArr => {
   // This...
