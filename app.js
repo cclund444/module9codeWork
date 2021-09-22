@@ -10,4 +10,3 @@ const inquirer = require('inquirer');
 //   console.log('Portfolio complete! Check out index.html to see the output!');
 // });
 
-console.log(inquirer);
