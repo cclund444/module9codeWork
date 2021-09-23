@@ -1,6 +1,5 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generatePage = require('./src/page-template');
 
 const promptUser = () => {
     return inquirer.prompt([
@@ -72,7 +71,7 @@ promptUser()
         console.log(portfolioData);
     });
 
-    
+
     
 // promptUser()
 //     .then(answers => console.log(answers))
