@@ -17,12 +17,22 @@ const promptUser = () => {
             name: 'about',
             message: 'Provide some information about yourself:'
         }
+
+        .then(projectData => {
+            portfolioData.projects.push(projectData);
+            if (projectData.confirmAddProject) {
+                return promptProject(portfolioData);
+            } else {
+                return portfolioData;
+            }
+        })
     ]);
 };
 
 promptUser().then(answers => console.log(answers));
 
-const promptProject = () => {
+const promptProject = portfolioData => {
+    portfolioData.projects = [];
     console.log(`
 =================
 Add a New Project
@@ -55,9 +65,13 @@ Add a New Project
             name: 'feature',
             message: 'Would you like to enter another project?',
             default: false
-        }
+        },
     ]);
 };
+
+if (!portfolioData.projects) {
+    portfolioData.projects = [];
+}
 
 promptUser()
     .then(promptProject)
