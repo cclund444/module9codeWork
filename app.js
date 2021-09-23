@@ -23,8 +23,11 @@ const promptUser = () => {
 promptUser().then(answers => console.log(answers));
 
 const promptProject = () => {
-    console.log('
-    ');
+    console.log(`
+=================
+Add a New Project
+=================
+`);
     return inquirer.prompt([
         {
             type: 'input',
@@ -57,9 +60,15 @@ const promptProject = () => {
 };
 
 promptUser()
-    .then(answers => console.log(answers))
     .then(promptProject)
-    .then(projectAnswers => console.log(projectAnswers));
+    .then(portfolioData => {
+        console.log(portfolioData);
+    });
+    
+// promptUser()
+//     .then(answers => console.log(answers))
+//     .then(promptProject)
+//     .then(projectAnswers => console.log(projectAnswers));
 
 // const fs = require('fs');
 // const generatePage = require('./src/page-template');
