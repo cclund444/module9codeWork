@@ -101,7 +101,7 @@ if (!portfolioData.projects) {
             type: 'confirm',
             name: 'feature',
             message: 'Would you like to enter another project?',
-            default: false,
+            default: true,
             validate: nameInput => {
                 if (nameInput) {
                     return true;
@@ -115,10 +115,23 @@ if (!portfolioData.projects) {
 };
 
 promptUser()
-    .then(promptProject)
-    .then(portfolioData => {
-        console.log(portfolioData);
-    });
+{
+    type: 'confirm',
+    name: 'confirmAbout',
+    mesage: 'Would you like to enter some information about yourself for an "About" section?',
+    default: true
+},'{
+    type: 'input',
+    name: 'about',
+    message: 'Provide some information about yourself:',
+    when: ([confirmAbout]) => {
+        if (confirmAbout) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
     
