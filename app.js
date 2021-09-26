@@ -129,10 +129,7 @@ if (!portfolioData.projects) {
     ]);
 };
 
-promptUser()
-  .then(promptProject)
-  .then(portfolioData => {
-    console.log(portfolioData);
+
     
 // promptUser()
 //     .then(answers => console.log(answers))
