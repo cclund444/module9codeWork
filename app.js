@@ -1,5 +1,5 @@
 const fs = require('fs');
-const generatePage = require('./src/page-template');
+// const generatePage = require('./src/page-template');
 const inquirer = require('inquirer');
 
 const promptUser = () => {
