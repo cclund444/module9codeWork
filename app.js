@@ -1,4 +1,5 @@
 const fs = require('fs');
+const generatePage = require('./src/page-template');
 const inquirer = require('inquirer');
 
 const promptUser = () => {
@@ -44,10 +45,10 @@ const promptUser = () => {
         ]);
       };
 
-promptUser().then(answers => console.log(answers));
+    promptUser().then(answers => console.log(answers));
+    
 
-
-const promptProject = portfolioData => {
+    const promptProject = portfolioData => {
     console.log(`
   =================
   Add a New Project
@@ -128,18 +129,24 @@ const promptProject = portfolioData => {
   };
 
 
-    
-// promptUser()
-//     .then(answers => console.log(answers))
-//     .then(promptProject)
-//     .then(projectAnswers => console.log(projectAnswers));
-// const fs = require('fs');
-// const generatePage = require('./src/page-template');
+ 
+promptUser()
+    .then(promptProject)
+    .then(portfolioData => {
+        const pageHTML = generatePage(portfolioData);
+        
+        // fs.writeFile('./index.html', pageHTML, err => {
+        //   if (err) throw new ERROR(err);
 
-// const pageHTML = generatePage(name, github);
+        //   console.log('Portfolio complete! Check out index.html to see the output!');
+        // });
+    });
+
+
+
 
 // fs.writeFile('./index.html', pageHTML, err => {
-//   if (err) throw err;
+//   if (err) throw new ERROR(err);
 
 //   console.log('Portfolio complete! Check out index.html to see the output!');
 // });
