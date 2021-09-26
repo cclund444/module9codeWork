@@ -19,8 +19,16 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'github',
-            message: 'Enter your GitHub Username'
-        },
+            message: 'Enter your GitHub Username (Required)',
+            validate: githubInput => {
+              if (githubInput) {
+                return true;
+              } else {
+                console.log('Please enter your GitHub username!');
+                return false;
+              }
+            }
+          },
         {
             type: 'confirm',
             name: 'confirmAbout',
@@ -30,18 +38,11 @@ const promptUser = () => {
         {
             type: 'input',
             name: 'about',
-            message: 'Provide some information about yourself:' ,
-            type: 'input',
-            when: ([confirmAbout]) => {
-             if (confirmAbout) {
-                 return true;
-            } else {
-             return false;
-            }
-            }
-        }
-    ]);
-};
+            message: 'Provide some information about yourself:',
+            when: ({ confirmAbout }) => confirmAbout
+          }
+        ]);
+      };
 
 promptUser().then(answers => console.log(answers));
 
@@ -128,11 +129,10 @@ if (!portfolioData.projects) {
     ]);
 };
 
-
-
-
-
-
+promptUser()
+  .then(promptProject)
+  .then(portfolioData => {
+    console.log(portfolioData);
     
 // promptUser()
 //     .then(answers => console.log(answers))
