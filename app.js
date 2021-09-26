@@ -22,9 +22,23 @@ const promptUser = () => {
             message: 'Enter your GitHub Username'
         },
         {
+            type: 'confirm',
+            name: 'confirmAbout',
+            mesage: 'Would you like to enter some information about yourself for an "About" section?',
+            default: true
+        },
+        {
             type: 'input',
             name: 'about',
-            message: 'Provide some information about yourself:'
+            message: 'Provide some information about yourself:' ,
+            type: 'input',
+            when: ([confirmAbout]) => {
+             if (confirmAbout) {
+                 return true;
+            } else {
+             return false;
+            }
+            }
         }
     ]);
 };
@@ -114,23 +128,8 @@ if (!portfolioData.projects) {
     ]);
 };
 
-promptUser()
-{
-    type: 'confirm',
-    name: 'confirmAbout',
-    mesage: 'Would you like to enter some information about yourself for an "About" section?',
-    default: true
-},'{
-    type: 'input',
-    name: 'about',
-    message: 'Provide some information about yourself:',
-    when: ([confirmAbout]) => {
-        if (confirmAbout) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
+
 
 
 
@@ -139,7 +138,6 @@ promptUser()
 //     .then(answers => console.log(answers))
 //     .then(promptProject)
 //     .then(projectAnswers => console.log(projectAnswers));
-
 // const fs = require('fs');
 // const generatePage = require('./src/page-template');
 
